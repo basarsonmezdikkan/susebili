@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1f33" />
+    <title>Su Takibi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Su Takibi ana sayfa">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2.5S5.5 10 5.5 15.2a6.5 6.5 0 0 0 13 0C18.5 10 12 2.5 12 2.5Z"/><path d="M8.7 15.5c.4 1.8 1.7 2.8 3.5 3"/></svg>
+          </span>
+          <span>Su Takibi</span>
+        </a>
+        <button class="profile-button" id="profileButton" type="button" aria-label="Profil">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 20c.5-4 3-6 6.5-6s6 2 6.5 6"/></svg>
+        </button>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" id="todayLabel">BUGÜN</p>
+          <h1>Günlük su hedefini<br />tamamla</h1>
+          <p class="hero-message" id="heroMessage">Harika ilerliyorsun!</p>
+        </div>
+
+        <div class="progress-card" aria-label="Günlük su ilerleme durumu">
+          <div class="progress-ring" id="progressRing">
+            <div class="progress-ring-inner">
+              <strong id="progressPercent">0%</strong>
+              <span>tamamlandı</span>
+            </div>
+          </div>
+          <div class="amount-summary">
+            <strong><span id="currentAmount">0</span> <small>ml</small></strong>
+            <span>Hedef: <b id="targetAmount">2000 ml</b></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="dragon-strip" id="dragonStrip" aria-label="Ejderha">
+        <svg class="dragon" viewBox="0 0 320 160" role="img" aria-label="Ejderha">
+          <g class="flame" id="flame">
+            <path class="flame-outer" d="M232 70c26-18 40-6 62-26-4 22 8 30 20 38-22 2-30 12-44 22-12-14-22-18-38-34Z"/>
+            <path class="flame-inner" d="M236 72c20-10 32-4 48-16-2 14 6 18 14 24-16 2-22 8-32 14-8-8-16-12-30-22Z"/>
+          </g>
+          <g class="smoke" id="smoke">
+            <circle cx="244" cy="62" r="6"/><circle cx="258" cy="48" r="8"/><circle cx="276" cy="34" r="10"/>
+          </g>
+          <path class="dragon-wing" d="M110 80 70 18l46 24 8-30 22 44Z"/>
+          <path class="dragon-tail" d="M96 112c-30 6-52 0-72-22 8 24 30 42 62 44Z"/>
+          <path class="dragon-body" d="M92 120c-4-34 16-58 52-58 22 0 34 6 54 2l28-6c8-2 12 6 6 10l-14 10c-4 20-18 40-42 46-30 6-82 2-84-4Z"/>
+          <path class="dragon-head" d="M190 62c10-14 30-16 44-8l6 10-6 10c-14 8-34 6-44-12Z"/>
+          <path class="dragon-horn" d="M200 52l-4-16 14 10ZM214 48l2-16 10 14Z"/>
+          <circle class="dragon-eye" id="dragonEye" cx="222" cy="60" r="3"/>
+          <path class="dragon-mouth" d="M226 70l12-2"/>
+          <path class="dragon-belly" d="M120 132c20 6 50 6 70-6"/>
+        </svg>
+        <p class="dragon-text" id="dragonText">Ejderha ateş püskürtüyor!</p>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel add-panel" aria-labelledby="addTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SUSUZLUKTAN UZAK DUR</p>
+              <h2 id="addTitle">Su ekle</h2>
+            </div>
+          </div>
+
+          <div class="quick-options" aria-label="Hızlı su ekleme seçenekleri">
+            <button class="quick-option" type="button" data-amount="250">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 5h14l-2 22H11L9 5Z"/><path d="M9.5 11h13"/></svg>
+              <strong>250 ml</strong>
+              <span>Bir bardak</span>
+            </button>
+            <button class="quick-option" type="button" data-amount="500">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h16l-2.5 24H10.5L8 4Z"/><path d="M9 11h14"/></svg>
+              <strong>500 ml</strong>
+              <span>Bir şişe</span>
+            </button>
+            <button class="quick-option" type="button" data-amount="750">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 4h18l-3 24H10L7 4Z"/><path d="M8.5 12h15"/></svg>
+              <strong>750 ml</strong>
+              <span>Büyük şişe</span>
+            </button>
+          </div>
+
+          <form class="custom-form" id="customForm">
+            <label for="customAmount">Özel miktar</label>
+            <div class="custom-input">
+              <input id="customAmount" name="amount" type="number" min="1" max="5000" step="1" placeholder="Miktar gir" inputmode="numeric" />
+              <span>ml</span>
+              <button type="submit">Ekle</button>
+            </div>
+          </form>
+
+          <button class="undo-button" id="undoButton" type="button" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7 4 12l5 5"/><path d="M5 12h8a6 6 0 0 1 6 6"/></svg>
+            Son eklemeyi geri al
+          </button>
+        </section>
+
+        <section class="panel bmi-panel" aria-labelledby="bmiTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SAĞLIK BİLGİN</p>
+              <h2 id="bmiTitle">Vücut Kütle Endeksi</h2>
+            </div>
+          </div>
+
+          <form id="bmiForm" class="bmi-form">
+            <div class="field-group">
+              <label for="height">Boy</label>
+              <div class="unit-input">
+                <input id="height" type="number" min="50" max="250" step="1" placeholder="175" required />
+                <span>cm</span>
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="weight">Kilo</label>
+              <div class="unit-input">
+                <input id="weight" type="number" min="20" max="300" step="0.1" placeholder="70" required />
+                <span>kg</span>
+              </div>
+            </div>
+            <button class="calculate-button" type="submit">Hesapla</button>
+          </form>
+
+          <div class="bmi-result" id="bmiResult" hidden>
+            <div>
+              <span>VKİ sonucun</span>
+              <strong id="bmiValue">0.0</strong>
+            </div>
+            <span class="bmi-status" id="bmiStatus">Normal</span>
+          </div>
+        </section>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
